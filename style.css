@@ -1,6 +1,11 @@
 @keyframes custom {
     0%{left: -100%;}
-    100%{left: 0;}
+    100%{left: 20%; }
+}
+
+body {
+    display: flex;
+    justify-content: center;
 }
 
 .efeito-custom {
