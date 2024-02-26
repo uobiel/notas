@@ -1,3 +1,14 @@
+@keyframes custom {
+    0%{left: -100%;}
+    100%{left: 0;}
+}
+
+.efeito-custom {
+    position: absolute;
+    animation-name: custom;
+    animation-duration: 0.9s;
+}
+
 .max-w-custom {
     max-width: 500px;
 }
