@@ -17,3 +17,11 @@ body {
 .max-w-custom {
     max-width: 500px;
 }
+
+#modoClaro {
+    display: none;
+}
+
+#modoClaro:hover, #modoEscuro:hover {
+    padding: 5px;
+}

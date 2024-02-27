@@ -7,6 +7,11 @@ const alertaSemNotas = document.querySelector('#alerta-sem-notas');
 const alertaCriandoNota = document.querySelector('#alerta-criando-nota');
 const modal = document.querySelector("#fade");
 const excluir = document.querySelector("#excluir");
+const modoEscuro = document.querySelector("#modoEscuro");
+const modoClaro = document.querySelector("#modoClaro");
+const page = document.querySelector("#page");
+const containerModoClaro = document.querySelector("#containerModoClaro");
+const containerModoEscuro = document.querySelector("#containerModoEscuro");
 const notas = [];
 let notaId = 1; // Inicializando o ID da nota
 
@@ -150,4 +155,65 @@ sessao2.addEventListener('click', function(event) {
         modal.dataset.notaId = id;
         $('#fade').modal('show');
     }
+});
+
+modoEscuro.addEventListener('click', function(){
+    document.body.style.transition = 'background-color 0.5s ease';
+    document.body.style.backgroundColor = '#1D1D1D';
+    modoEscuro.style.display = 'none';
+    containerModoEscuro.style.display = 'none'; // Ocultando o ícone do modo escuro
+    textoModoEscuro.style.display = 'none'; // Ocultando o texto do modo escuro
+    modoClaro.style.display = 'block';
+    containerModoClaro.style.display = 'inline-flex'; // Exibindo o ícone do modo claro
+    containerModoClaro.style.transition = 'opacity 0.5s ease';
+    containerModoClaro.style.opacity = '1'; // Exibindo o ícone do modo claro suavemente
+    textoModoClaro.style.display = 'inline-block'; // Exibindo o texto do modo claro
+    textoModoClaro.style.transition = 'opacity 0.5s ease';
+    textoModoClaro.style.opacity = '1'; // Exibindo o texto do modo claro suavemente
+    page.style.transition = 'color 0.5s ease';
+    page.style.color = 'white';
+});
+
+modoClaro.addEventListener('click', function(){
+    document.body.style.transition = 'background-color 0.5s ease';
+    document.body.style.backgroundColor = 'white';
+    modoEscuro.style.display = 'block';
+    containerModoEscuro.style.display = 'inline-flex'; // Exibindo o ícone do modo escuro
+    containerModoEscuro.style.transition = 'opacity 0.5s ease';
+    containerModoEscuro.style.opacity = '1'; // Exibindo o ícone do modo escuro suavemente
+    textoModoEscuro.style.display = 'inline-block'; // Exibindo o texto do modo escuro
+    textoModoEscuro.style.transition = 'opacity 0.5s ease';
+    textoModoEscuro.style.opacity = '1'; // Exibindo o texto do modo escuro suavemente
+    modoClaro.style.display = 'none';
+    containerModoClaro.style.display = 'none'; // Ocultando o ícone do modo claro
+    textoModoClaro.style.display = 'none'; // Ocultando o texto do modo claro
+    page.style.transition = 'color 0.5s ease';
+    page.style.color = 'black';
+});
+
+const textoModoEscuro = document.getElementById('textoModoEscuro');
+const textoModoClaro = document.getElementById('textoModoClaro');
+
+modoEscuro.addEventListener('mouseover', function(){
+    textoModoEscuro.style.transition = 'opacity 0.5s ease';
+    textoModoEscuro.textContent = 'Clique para ativar modo escuro';
+    textoModoEscuro.style.fontSize = '15px';
+    textoModoEscuro.style.opacity = '1';
+});
+
+modoEscuro.addEventListener('mouseout', function(){
+    textoModoEscuro.style.transition = 'opacity 0.5s ease';
+    textoModoEscuro.style.opacity = '0';
+});
+
+modoClaro.addEventListener('mouseover', function(){
+    textoModoClaro.style.transition = 'opacity 0.5s ease';
+    textoModoClaro.textContent = 'Clique para ativar modo claro';
+    textoModoClaro.style.fontSize = '15px';
+    textoModoClaro.style.opacity = '1';
+});
+
+modoClaro.addEventListener('mouseout', function(){
+    textoModoClaro.style.transition = 'opacity 0.5s ease';
+    textoModoClaro.style.opacity = '0';
 });
