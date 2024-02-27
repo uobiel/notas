@@ -25,3 +25,13 @@ body {
 #modoClaro:hover, #modoEscuro:hover {
     padding: 5px;
 }
+
+#textoModoClaro, #textoModoEscuro {
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#textoModoClaro {
+    display: none;
+}

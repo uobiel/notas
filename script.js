@@ -12,6 +12,9 @@ const modoClaro = document.querySelector("#modoClaro");
 const page = document.querySelector("#page");
 const containerModoClaro = document.querySelector("#containerModoClaro");
 const containerModoEscuro = document.querySelector("#containerModoEscuro");
+const textoModoEscuro = document.getElementById('textoModoEscuro');
+const textoModoClaro = document.getElementById('textoModoClaro');
+
 const notas = [];
 let notaId = 1; // Inicializando o ID da nota
 
@@ -191,29 +194,20 @@ modoClaro.addEventListener('click', function(){
     page.style.color = 'black';
 });
 
-const textoModoEscuro = document.getElementById('textoModoEscuro');
-const textoModoClaro = document.getElementById('textoModoClaro');
-
 modoEscuro.addEventListener('mouseover', function(){
     textoModoEscuro.style.transition = 'opacity 0.5s ease';
-    textoModoEscuro.textContent = 'Clique para ativar modo escuro';
-    textoModoEscuro.style.fontSize = '15px';
     textoModoEscuro.style.opacity = '1';
 });
 
 modoEscuro.addEventListener('mouseout', function(){
     textoModoEscuro.style.transition = 'opacity 0.5s ease';
-    textoModoEscuro.style.opacity = '0';
 });
 
 modoClaro.addEventListener('mouseover', function(){
     textoModoClaro.style.transition = 'opacity 0.5s ease';
-    textoModoClaro.textContent = 'Clique para ativar modo claro';
-    textoModoClaro.style.fontSize = '15px';
     textoModoClaro.style.opacity = '1';
 });
 
 modoClaro.addEventListener('mouseout', function(){
     textoModoClaro.style.transition = 'opacity 0.5s ease';
-    textoModoClaro.style.opacity = '0';
 });
