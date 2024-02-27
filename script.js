@@ -164,15 +164,15 @@ modoEscuro.addEventListener('click', function(){
     document.body.style.transition = 'background-color 0.5s ease';
     document.body.style.backgroundColor = '#1D1D1D';
     modoEscuro.style.display = 'none';
-    containerModoEscuro.style.display = 'none'; // Ocultando o ícone do modo escuro
-    textoModoEscuro.style.display = 'none'; // Ocultando o texto do modo escuro
+    containerModoEscuro.style.display = 'none';
+    textoModoEscuro.style.display = 'none'; 
     modoClaro.style.display = 'block';
-    containerModoClaro.style.display = 'inline-flex'; // Exibindo o ícone do modo claro
+    containerModoClaro.style.display = 'inline-flex'; 
     containerModoClaro.style.transition = 'opacity 0.5s ease';
-    containerModoClaro.style.opacity = '1'; // Exibindo o ícone do modo claro suavemente
-    textoModoClaro.style.display = 'inline-block'; // Exibindo o texto do modo claro
+    containerModoClaro.style.opacity = '1';
+    textoModoClaro.style.display = 'inline-block'; 
     textoModoClaro.style.transition = 'opacity 0.5s ease';
-    textoModoClaro.style.opacity = '1'; // Exibindo o texto do modo claro suavemente
+    textoModoClaro.style.opacity = '1'; 
     page.style.transition = 'color 0.5s ease';
     page.style.color = 'white';
 });
@@ -181,15 +181,15 @@ modoClaro.addEventListener('click', function(){
     document.body.style.transition = 'background-color 0.5s ease';
     document.body.style.backgroundColor = 'white';
     modoEscuro.style.display = 'block';
-    containerModoEscuro.style.display = 'inline-flex'; // Exibindo o ícone do modo escuro
+    containerModoEscuro.style.display = 'inline-flex'; 
     containerModoEscuro.style.transition = 'opacity 0.5s ease';
-    containerModoEscuro.style.opacity = '1'; // Exibindo o ícone do modo escuro suavemente
-    textoModoEscuro.style.display = 'inline-block'; // Exibindo o texto do modo escuro
+    containerModoEscuro.style.opacity = '1'; 
+    textoModoEscuro.style.display = 'inline-block'; 
     textoModoEscuro.style.transition = 'opacity 0.5s ease';
-    textoModoEscuro.style.opacity = '1'; // Exibindo o texto do modo escuro suavemente
+    textoModoEscuro.style.opacity = '1'; 
     modoClaro.style.display = 'none';
-    containerModoClaro.style.display = 'none'; // Ocultando o ícone do modo claro
-    textoModoClaro.style.display = 'none'; // Ocultando o texto do modo claro
+    containerModoClaro.style.display = 'none'; 
+    textoModoClaro.style.display = 'none'; 
     page.style.transition = 'color 0.5s ease';
     page.style.color = 'black';
 });
