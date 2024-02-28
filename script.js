@@ -14,6 +14,9 @@ const containerModoClaro = document.querySelector("#containerModoClaro");
 const containerModoEscuro = document.querySelector("#containerModoEscuro");
 const textoModoEscuro = document.getElementById('textoModoEscuro');
 const textoModoClaro = document.getElementById('textoModoClaro');
+const campoBusca = document.querySelector("#campoBusca");
+const listaNotas = document.querySelector("#listaNotas");
+const mensagemNotaNaoEncontrada = document.querySelector("#mensagemNotaNaoEncontrada");
 
 const notas = [];
 let notaId = 1; // Inicializando o ID da nota
@@ -61,6 +64,35 @@ adicionar.addEventListener('click', function() {
     }
 });
 
+campoBusca.addEventListener('input', function(){
+    const buscaFeita = campoBusca.value.trim(); // Removendo espaços em branco no início e no final
+    const resultadoBusca = buscaNota(buscaFeita);
+    exibeResultadoBusca(resultadoBusca);
+});
+
+function buscaNota(busca){
+    return notas.filter((elemento) => {
+        // Condição para verificar se qualquer parte do texto da nota contém a busca
+        return elemento.nomeNota.toLowerCase().includes(busca.toLowerCase()) ||
+               elemento.obsNota.toLowerCase().includes(busca.toLowerCase()) ||
+               elemento.notaD.toLowerCase().includes(busca.toLowerCase());
+    });
+}
+
+function exibeResultadoBusca(resultado){
+    // Limpa o conteúdo atual da sessão2 antes de renderizar o resultado da busca
+    listaNotas.innerHTML = '';
+    
+    // Verifica se há notas no resultado da busca
+    if(resultado.length === 0) {
+        mensagemNotaNaoEncontrada.style.display = 'block'
+    } else {
+        mensagemNotaNaoEncontrada.style.display = 'none'
+        resultado.forEach(nota => renderizarNota(nota));
+    }
+}
+
+
 botaoVoltar.addEventListener('click', function() {
     if (notas.length === 0) {
         displaySemNotas();
@@ -70,6 +102,7 @@ botaoVoltar.addEventListener('click', function() {
 });
 
 excluir.addEventListener('click', function() {
+    campoBusca.value = '';
     const id = parseInt(modal.dataset.notaId);
     const index = notas.findIndex(nota => nota.id === id);
     if (index !== -1) {
@@ -122,7 +155,6 @@ function renderizarNota(nota) {
                 </h5>
             </div>
             <div id="collapse${nota.id}" class="collapse" aria-labelledby="heading${nota.id}" data-parent="#accordionExample${nota.id}">
-
                 <div class="card-obs text-center">
                     ${nota.obsNota}
                 </div>
@@ -132,7 +164,7 @@ function renderizarNota(nota) {
             </div>
         </div>
     `;
-    sessao2.appendChild(notaDiv);
+    listaNotas.appendChild(notaDiv); // Adiciona a nota na lista de notas
 
     // Adicionando evento de clique ao botão de remover nota
     const btnRemoverNota = notaDiv.querySelector('.btn-remover-nota');
@@ -144,9 +176,27 @@ function renderizarNota(nota) {
 }
 
 function renderizarNotas() {
-    sessao2.innerHTML = '';
-    notas.forEach(nota => renderizarNota(nota));
+    // Verifica se há notas na sessão2
+    const notasExistentes = sessao2.querySelectorAll('.accordion');
+    
+    // Remove apenas as notas que foram excluídas
+    notasExistentes.forEach(notaExistente => {
+        const idExistente = parseInt(notaExistente.id.replace('accordionExample', ''));
+        const index = notas.findIndex(nota => nota.id === idExistente);
+        if (index === -1) {
+            notaExistente.remove();
+        }
+    });
 
+    // Adiciona apenas as notas que foram adicionadas
+    notas.forEach(nota => {
+        const notaExistente = sessao2.querySelector(`#accordionExample${nota.id}`);
+        if (!notaExistente) {
+            renderizarNota(nota);
+        }
+    });
+
+    // Se não houver notas após a remoção, exiba a mensagem de sem notas
     if(notas.length === 0){
         displaySemNotas();
     } 

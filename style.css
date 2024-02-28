@@ -35,3 +35,7 @@ body {
 #textoModoClaro {
     display: none;
 }
+
+#mensagemNotaNaoEncontrada {
+    display: none;
+}
